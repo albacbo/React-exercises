@@ -9,20 +9,33 @@ class StudentForm extends Component {
     super(props);
     this.state = {
       student: {
-        content : "",
         id: props.match.params.id,
-        name: props.match.params.name,
-        surname: props.match.params.surname,
-        age: props.match.params.age,
+        name: "",
+        surname: "",
+        age: "",
       },
       redirectToDefault: false
     }
   }
   
-  handleContentChange = (event) => {
+  handleNameChange = (event) => {
     this.setState({ 
       student : { ...this.state.student, 
-                  content: event.target.value}
+                  name: event.target.value}
+    });
+  }
+  
+  handleSurnameChange = (event) => {
+    this.setState({ 
+      student : { ...this.state.student,
+                  surname: event.target.value}
+    });
+  }
+  
+  handleAgeChange = (event) => {
+    this.setState({ 
+      student : { ...this.state.student, 
+                  age: event.target.value}
     });
   }
 
@@ -52,9 +65,17 @@ class StudentForm extends Component {
             <div><label>Task</label></div>
             <div>
               <textarea 
-              name="content" 
-              value={this.state.student.content}
-              onChange={this.handleContentChange}></textarea> 
+              name="name" 
+              value={this.state.student.name}
+              onChange={this.handleNameChange}></textarea> 
+              <textarea 
+              name="surname" 
+              value={this.state.student.surname}
+              onChange={this.handleSurnameChange}></textarea> 
+              <textarea 
+              name="age" 
+              value={this.state.student.age}
+              onChange={this.handleAgeChange}></textarea> 
             </div>
             <div>
              <input type="submit" value="Save Student" />
@@ -64,10 +85,8 @@ class StudentForm extends Component {
     );
   }
 }
-function mapStateToProps (state, props) {
-  
+function mapStateToProps (state, props) {  
   const id = props.match.params.id || ""
-
   return {
     students: state,
     student: state.find( s => s.id === id)

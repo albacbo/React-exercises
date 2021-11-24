@@ -18,7 +18,7 @@ class Student extends Component {
   render() {
     const student = this.props.student;
     return (
-            <div className="Student"  >{student.content}
+            <div className="Student"  >{student.name}
               <div className="StudentControls">
                 <a  onClick={() => this.showDetail()}>Detail</a> | 
                 <Link to={`/studetns/edit/${student.id}`}>Update</Link> |  
