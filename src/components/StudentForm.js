@@ -9,10 +9,10 @@ class StudentForm extends Component {
     super(props);
     this.state = {
       student: {
-        id: props.match.params.id,
         name: "",
         surname: "",
-        age: "",
+        age: 0,
+        id: props.match.params.id,
       },
       redirectToDefault: false
     }
@@ -64,18 +64,21 @@ class StudentForm extends Component {
           <form onSubmit={this.handleSubmit}>
             <div><label>Task</label></div>
             <div>
-              <textarea 
+              <input 
+              type="text"
               name="name" 
               value={this.state.student.name}
-              onChange={this.handleNameChange}></textarea> 
-              <textarea 
+              onChange={this.handleNameChange}></input> 
+              <input 
+              type="text"
               name="surname" 
               value={this.state.student.surname}
-              onChange={this.handleSurnameChange}></textarea> 
-              <textarea 
+              onChange={this.handleSurnameChange}></input> 
+              <input 
+              type="text"
               name="age" 
               value={this.state.student.age}
-              onChange={this.handleAgeChange}></textarea> 
+              onChange={this.handleAgeChange}></input> 
             </div>
             <div>
              <input type="submit" value="Save Student" />
